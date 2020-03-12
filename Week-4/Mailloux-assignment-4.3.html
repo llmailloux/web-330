@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignment name</title>
+
+    <!-- jQuery reference -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+<h4>HTTP DELETE Request</h4>
+
+<button id="delete1">Delete Secutity User</button>
+
+<script>
+
+    $(function() {
+
+        $("#delete1").click(function(){
+
+            $.ajax({
+                url: 'http://httpbin.org/delete',
+                dataType: 'json',
+                type: 'DELETE',
+                data: { username: 'admin', password: 'secret', email: 'as@me.com'},
+                success: function(data, status) {
+                    console.log('Username: ' + data.form.username + '\nPassword: ' + data.form.password + '\nEmail: ' +data.form.email + '\nStatus: ' + status);
+                }
+            })    
+
+    });
+});
+
+</script>
+
+</body>
+</html>

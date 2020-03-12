@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignment name</title>
+
+    <!-- jQuery reference -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+<h4>HTTP GET Request</h4>
+<button id="get1">Get Random Breed</button>
+
+<script>
+
+    $(function() {
+
+        $("#get1").click(function(){
+
+            $.get('https://dog.ceo/api/breeds/image/random', function(data, status){
+                console.log('Data: ' + JSON.stringify(data) + '\nStatus: ' + status);
+            })
+
+        });
+    
+    });
+
+</script>
+
+</body>
+</html>
