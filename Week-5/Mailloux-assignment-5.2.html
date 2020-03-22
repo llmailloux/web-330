@@ -1,0 +1,67 @@
+<!--
+============================================
+; Title: Mailloux-assignment-5.2.html
+; Author: Professor Krasso
+; Date: March 22 2020
+: Modified by:  Laurie Mailloux
+; Description: The proxy pattern
+;===========================================
+ -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Exercise 5.2 - The Proxy Pattern</title>
+
+  <!--Bootstrap-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+  <!-- jquery Reference Library -->
+  <script type="text/javascript"
+    src="https://gc.kis.v2.scr.kaspersky-labs.com/5DACB2B0-5003-6543-8B39-D8EE6E4FC44C/main.js"
+    charset="UTF-8"></script>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+
+<body>
+  <nav class="navbar navbar-dark bar">
+    <a href="#" class="navbar-brand">Home</a>
+  </nav>
+
+  <br /><br />
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Exercise 5.2 - The Proxy Pattern</h2>
+        <button class="btn btn-primary" id="btnPreviewProxy">Preview Proxy</button>
+        <br />
+        <span id="spanProxyResults"></span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $(function () {
+
+      var animal = {
+        type: "Horse",
+        breed: "Paint",
+        display: function() {
+          //clear the span tag before adding new content
+          $("#spanProxyResults").html("");
+          $("#spanProxyResults").append("<br />Type: " + this.type + "<br />" + "Breed: " + this.breed);
+        }
+      };
+        //on button click display information 
+      $("#btnPreviewProxy").click($.proxy(animal, "display"));
+
+    });
+  </script>
+</body>
+
+</html>
