@@ -1,0 +1,82 @@
+<!-- /*
+============================================
+; Title:  Mailloux-assignment-7.4.html
+; Author: Laurie Mailloux
+; Date:   March 31 2020
+; Description: Other Bindings
+;===========================================
+*/ -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <title>Assignment 7.4</title>
+
+    <!-- Stylesheet - Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+      integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+      crossorigin="anonymous"
+    />
+     <!-- JavaScript Libraries -->
+     <script src="../Knockout-3.5.1.js"></script>
+    </head>
+    <body>
+      <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact Us</a>
+            </li>
+          </ul>
+        </nav>
+  
+        <div role="main" class="container">
+            <br /><br />
+            <h2>Other Bindings</h2>
+            <table class="table table-dark table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Discription</th>
+                    <th>Link</th>
+                </tr>
+                </thead>
+                <tbody data-bind="foreach: tutorials">
+                    <tr>
+                        <td data-bind="text: title, class: 'h4'"></td>
+                        <td data-bind="text: description"></td>
+                        <td><a class="a" data-bind="attr: {href: link, target: '_blank'}, text: link, style:{color: 'grey'}"></a></td>
+                    </tr>
+                </tbody>
+                </table>
+                </div>
+
+    <script>
+        function TutorialViewModel(){
+            this.tutorials = ko.observableArray([
+            {title: "JavaScript Object Accessors", description: "examples of Accessors in JavaScript", link:"https://www.w3schools.com/js/js_object_accessors.asp"},
+            {title: "JavaScript Display Objects", description: "example of how to display JS objects", link: "https://www.w3schools.com/js/js_object_display.asp"},
+            {title: "JavaScript Object Prototypes", description: "examples of how to use protoypes in JS", link: "https://www.w3schools.com/js/js_object_prototypes.asp"},
+            {title: "JavaScript Object Constructors", description: "examples of how to use Object Constructors", link: "https://www.w3schools.com/js/js_object_constructors.asp"},
+            {title: "JavaScript Properties", description: "examples of accessing hte property of an object", link: "https://www.w3schools.com/js/js_object_properties.asp"},
+            ]);
+        }
+        ko.applyBindings(new TutorialViewModel());
+
+    </script>
+  </body>
+</html>
