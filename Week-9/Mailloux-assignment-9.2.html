@@ -1,0 +1,100 @@
+<!--
+============================================
+; Title:  Mailloux-assignment-9.2.html
+; Date:  April 14 2020 
+; Modified by: Laurie Mailloux
+; Description: Hello MVC
+;===========================================
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <title>Mailloux Assignment 9.2</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Professor Krasso, Jeff Shepherd">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"
+      integrity="sha256-G7A4JrJjJlFqP0yamznwPjAApIKPkadeHfyIwiaa9e0=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.4.0/backbone-min.js"></script>
+  
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <ul  class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home</a>  
+               </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contact Us</a>
+            </li>
+        </ul>
+    </nav>
+
+  <div class="container" role="main">
+      <br /><br />
+
+      <h1>Hello MVC Example</h1>
+      <p class="lead"> Models and Collections...</p>
+      <div class="row">
+          <div class="col-sm-9">
+              <table class="table table-dark table-striped table-hover">
+                  <thead>
+                      <tr>
+                          <th>ID</th>
+                          <th>Name</th>
+                          <th>Salary</th>
+                        </tr>
+                  </thead>
+                  <tbody id="table-body"></tbody>
+              </table>
+          </div>
+      </div>
+     </div> 
+
+    <script>
+        function Employee(id, name, salary) {
+            this.id = id;
+            this.name = name;
+            this.salary = salary;
+        }
+
+        var EmployeeModel = Backbone.Model.extend({
+            defaults: {
+                id: '',
+                name: '',
+                salary: 0
+            }
+        });
+
+        var EmployeeCollection = Backbone.Collection.extend({
+            model: EmployeeModel
+        });
+
+        var Employees = new EmployeeCollection();
+        Employees.add(new Employee("001", "Tammy Bish", 10.25));
+        Employees.add(new Employee("002", "Josh Denim", 12.00));
+        Employees.add(new Employee("003", "Bailey Tanger", 11.75));
+        Employees.add(new Employee("004", "Todd Tilly", 12.50));
+        Employees.add(new Employee("005", "Roger Tree", 10.75));
+
+        Employees.each(function (employee) {  
+            $('#table-body').append( 
+            '<tr>' +  
+            '<td>' + employee.get('id') + '</td>' +
+            '<td>' + employee.get('name') + '</td>' + 
+            '<td>' + employee.get('salary') +  '</td>' +  
+            '</tr>'
+
+            );
+        });
+
+    </script>
+  </body>
+</html>
